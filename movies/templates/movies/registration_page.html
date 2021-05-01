@@ -1,0 +1,103 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Registration Form</h2>
+                    <form method="POST">
+                    	{% csrf_token %}
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Логин</label>
+                                    {{form.username}}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Пароль</label>
+                                    {{form.password1}}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Подтвердить пароль</label>
+                                    {{form.password2}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">День Рождения</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Пол</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Мужской
+                                            <input type="radio" checked="checked" name="gender">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Женский
+                                            <input type="radio" name="gender">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Почта</label>
+                                    {{form.email}}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Номер телефона</label>
+                                    <input class="input--style-4" type="text" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label class="label">Subject</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="subject">
+                                    <option disabled="disabled" selected="selected">Choose option</option>
+                                    <option>Subject 1</option>
+                                    <option>Subject 2</option>
+                                    <option>Subject 3</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                        	<div class = "col">
+                        		{% for field in form %}
+                        		{% if field.errors %}
+                        		<div class = "alert alert-danger" role = "alert">
+                        			{{field.errors|striptags}}
+                        		</div>
+                        		{% endif %}
+                        		{% endfor %}
+                        	</div>
+                        		
+                        </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Зарегистрироваться</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
