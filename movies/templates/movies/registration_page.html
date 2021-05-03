@@ -1,4 +1,5 @@
 {% extends '_base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
@@ -7,24 +8,37 @@
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
                     <form method="POST">
+
                     	{% csrf_token %}
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Логин</label>
-                                    {{form.username}}
+                                    {{form.username|as_crispy_field}}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Почта</label>
+                                    {{form.email|as_crispy_field}}
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Пароль</label>
-                                    {{form.password1}}
+                                    {{form.password1|as_crispy_field}}
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Подтвердить пароль</label>
-                                    {{form.password2}}
+                                    {{form.password2|as_crispy_field}}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Номер телефона</label>
+                                    <input class="input--style-4" type="text" name="phone">
                                 </div>
                             </div>
                         </div>
@@ -55,18 +69,6 @@
                             </div>
                         </div>
                         <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Почта</label>
-                                    {{form.email}}
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Номер телефона</label>
-                                    <input class="input--style-4" type="text" name="phone">
-                                </div>
-                            </div>
                         </div>
                         <div class="input-group">
                             <label class="label">Subject</label>
